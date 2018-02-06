@@ -13,21 +13,36 @@ const getByTitle = (title) => {
   return db.find(manga => manga.a == title)
 }
 
-// const getByGenre = (genres) => {
-//   let response = []
-//   db.slice(0,5).forEach(manga => {
-//     if (manga.c.every(genreCheck(current, manga.c))) {
-//        response.push(manga)
-//     }
-//   })
-//   return response
-// }
-//
-// const genreCheck = (currentTag, mangaGenres) => {
+
+const getByGenre = (incomingGenres) => {
+  let response = db.filter(manga => {
+    incomingGenres.forEach(genre => {
+      if (!manga.c.includes(genre)) {
+        return false
+      }
+    })
+    return true
+  })
+  return response
+}
+
+// const genreCheck = (manga, genres) => {
 //   let result = []
-//   if (mangaGenres.includes(currentTag)) result.push(true)
-//   else result.push(false)
-//   if result.includes(false) return false
+//   genres.forEach(genre => {
+//     manga.c.includes(genre) ? result.push(true) : result.push(false)
+//   })
+//   return result.includes(false) ? true : false
 // }
 
-module.exports = { getAll, getByTitle }
+module.exports = { getAll, getByTitle, getByGenre }
+
+
+// mangas.filter((manga) => {
+//     for (let genre of genres) {
+//         if (!manga.includes(genre) {
+//             return true
+//         } else {
+//             return false
+//         }
+//     }
+// })

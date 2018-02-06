@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000
 const cors = require('cors')
 
 const titleRoutes = require('./src/routes/mangaTitles')
+const chapterRoutes = require('./src/routes/chapters')
 
 app.disable('x-powered-by')
 app.use(morgan('dev'))
@@ -13,7 +14,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.use('/titles', titleRoutes)
-
+app.use('/chapters', chapterRoutes)
 
 app.use((err, req, res, next) => {
   const status = err.status || 500

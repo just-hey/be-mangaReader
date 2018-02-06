@@ -10,11 +10,11 @@ const getByTitle = (req, res, next) => {
   res.status(200).json(response)
 }
 
-// const getByGenre = (req, res, next) => {
-//   let genres = req.body.genres
-//   // console.log('ctrl', genres)
-//   let response = model.getByGenre(genres)
-//   res.status(200).json(response)
-// }
+const getByGenre = (req, res, next) => {
+  let genres = req.body.genres
+  console.log('ctrl', genres)
+  let response = model.getByGenre(genres)
+  res.status(200).json(response)
+}
 
-module.exports = { getAll, getByTitle }
+module.exports = { getAll, getByTitle, getByGenre }
