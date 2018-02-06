@@ -16,33 +16,15 @@ const getByTitle = (title) => {
 
 const getByGenre = (incomingGenres) => {
   let response = db.filter(manga => {
-    incomingGenres.forEach(genre => {
+    for (let genre of incomingGenres) {
       if (!manga.c.includes(genre)) {
         return false
       }
-    })
+    }
     return true
   })
   return response
 }
 
-// const genreCheck = (manga, genres) => {
-//   let result = []
-//   genres.forEach(genre => {
-//     manga.c.includes(genre) ? result.push(true) : result.push(false)
-//   })
-//   return result.includes(false) ? true : false
-// }
 
 module.exports = { getAll, getByTitle, getByGenre }
-
-
-// mangas.filter((manga) => {
-//     for (let genre of genres) {
-//         if (!manga.includes(genre) {
-//             return true
-//         } else {
-//             return false
-//         }
-//     }
-// })
