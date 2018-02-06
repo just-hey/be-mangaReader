@@ -3,15 +3,17 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000
+const cors = require('cors')
 
-//require in routes for things here-ish...
+const titleRoutes = require('./src/routes/mangaTitles')
 
-app.diable('x-powered-by')
+app.disable('x-powered-by')
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
 
-//app.use routes pulled in...
+app.use('/titles', titleRoutes)
+
 
 app.use((err, req, res, next) => {
   const status = err.status || 500
