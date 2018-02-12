@@ -10,9 +10,12 @@ const getAll = (limit) => {
 }
 
 const getByTitle = (title) => {
-  return db.find(manga => manga.a == title)
+  let response = db.filter(manga => {
+    if(!manga.a.includes(title.toLowerCase())) return false
+    return true
+  })
+  return response
 }
-
 
 const getByGenre = (incomingGenres) => {
   let response = db.filter(manga => {

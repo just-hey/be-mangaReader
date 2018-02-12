@@ -7,7 +7,7 @@ router.get('/', ctrl.getAll)
 
 router.get('/:title', ctrl.getByTitle)
 
-router.post('/', ctrl.getByGenre) 
+router.post('/', ctrl.getByGenre)
 
 
-module.exports = router
+module.exports = router 
