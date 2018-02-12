@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     table.foreign('user_id').references('users.id').onDelete('CASCADE')
 
     table.string('manga_title').notNullable()
+    table.string('manga_title_key').notNullable()
 
     table.string('chapter_name').notNullable().defaultsTo('')
     table.integer('chapter_number').notNullable()
@@ -17,5 +18,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-
+  return knex.schema.dropTable('currentreads')
 };
