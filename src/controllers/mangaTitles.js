@@ -10,7 +10,7 @@ const getByTitle = (req, res, next) => {
   if (!response.length) {
     next({status: 404, message: 'The Manga you\'re looking for is not here.'})
   } else {
-      res.status(200).json(response)
+    res.status(200).json(response)
   }
 }
 
