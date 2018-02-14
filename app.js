@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000
 const titleRoutes = require('./src/routes/mangaTitles')
 const chapterRoutes = require('./src/routes/chapters')
 const usersRoutes = require('./src/routes/users')
+const processErrorMessages = require('./src/models/errors')
 
 app.use(cors())
 app.disable('x-powered-by')

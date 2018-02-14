@@ -1,5 +1,5 @@
-const getByEmail = () => {
-  return 'get route'
+const login = () => {
+  return 'made it!'
 }
 
 const createUser = () => {
@@ -14,4 +14,4 @@ const deleteUser = () => {
   return 'delete route'
 }
 
-module.exports = { getByEmail, createUser, updateUser, deleteUser }
+module.exports = { login, createUser, updateUser, deleteUser }
