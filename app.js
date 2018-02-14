@@ -7,6 +7,7 @@ const port = process.env.PORT || 3000
 
 const titleRoutes = require('./src/routes/mangaTitles')
 const chapterRoutes = require('./src/routes/chapters')
+const usersRoutes = require('./src/routes/users')
 
 app.use(cors())
 app.disable('x-powered-by')
@@ -16,6 +17,7 @@ app.use(bodyParser.json())
 
 app.use('/titles', titleRoutes)
 app.use('/chapters', chapterRoutes)
+app.use('/users', usersRoutes)
 
 
 app.use((err, req, res, next) => {
