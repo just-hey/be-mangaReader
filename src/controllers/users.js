@@ -1,7 +1,9 @@
 const model = require('../models/users')
 
-const getByEmail = (req, res, next) => {
-  let response = model.getByEmail(req.params.email)
+const login = (req, res, next) => {
+  let { email, password } = req.body
+  //begin validations...
+  let response = model.login()
   res.send(200).json(response)
 }
 
@@ -20,4 +22,4 @@ const deleteUser = (req, res, next) => {
   res.send(200).json(response)
 }
 
-module.exports = { getByEmail, createUser, updateUser, deleteUser }
+module.exports = { login, createUser, updateUser, deleteUser }

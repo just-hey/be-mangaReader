@@ -3,9 +3,9 @@ const router = express.Router()
 const ctrl = require('../controllers/users')
 
 
-router.get('/:email', ctrl.getByEmail)
+router.post('/login', ctrl.login)
 
-router.post('/', ctrl.createUser)
+router.post('/signup', ctrl.createUser)
 
 router.patch('/:email', ctrl.updateUser)
 
