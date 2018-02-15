@@ -1,10 +1,12 @@
 const model = require('../models/chapters')
 
-const getChapter = (req, res, next) => {
+const getChapters = (req, res, next) => {
   console.log(req.params.id)
-  let response = model.getChapter(req.params.id)
-  console.log('we make it out?',response)
-  res.send(200).json(response)
+  model.getChapters(req.params.id)
+    .then(response => {
+      console.log('we make it out?',response)
+      res.status(200).json(response)
+    })
 }
 
-module.exports = { getChapter }
+module.exports = { getChapters }

@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
     table.string('manga_title_key').notNullable()
 
     table.string('chapter_name').notNullable().defaultsTo('')
-    table.integer('chapter_number').notNullable()
+    table.string('chapter_number').notNullable()
 
     table.string('last_viewed_page').notNullable().defaultsTo('')
     table.integer('last_viewed_page_number').notNullable()
