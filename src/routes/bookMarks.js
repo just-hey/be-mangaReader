@@ -4,5 +4,4 @@ const ctrl = require('../controllers/bookMarks')
 
 router.get('/:id', ctrl.getUserBookMarks)
 
-
 module.exports = router
