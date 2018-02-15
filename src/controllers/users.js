@@ -17,16 +17,24 @@ const login = (req, res, next) => {
   //check if user is in db.
   model.getUserForVerification(email)
     .then(user => {
-      console.log(user)
+      // console.log('the user thing in users.js',user)
       if (!user) throw new Error('noSuchUser')
       // check if password matches stored
       if(!bcrypt.compareSync(password, user.hashed_password)) throw new Error('invalidPassword')
       // sign token with user id
-      return Token.sign(user.id)
+      let resObj = {}
+      resObj.id = user.id
+      Token.sign(user.id)
+        .then(tokenProm => {
+          resObj.token = tokenProm
+          return resObj
+        })
+        //return token to client with
+        .then(result =>{
+          res.status(201).json({ response: result })
+        })
+        .catch(next)
     })
-    //return token to client
-    .then(token => res.status(201).json({ response: token }))
-    .catch(next)
 }
 
 const createUser = (req, res, next) => {
