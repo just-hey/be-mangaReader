@@ -45,11 +45,6 @@ const createUser = (req, res, next) => {
     })
 }
 
-const updateUser = (req, res, next) => {
-  let response = model.updateUser(req.params.email)
-  res.status(200).json(response)
-}
-
 const deleteUser = (req, res, next) => {
   let response = model.deleteUser(req.params.email)
   res.status(200).json(response)

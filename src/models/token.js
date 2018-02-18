@@ -5,7 +5,7 @@ const verifyPromise = promisify(verify)
 const secret = process.env.SECRET_KEY
 
 class Token {
-  // Both of these Token methods are async and return a promise
+  // Both of these Token methods are async and return a PROMISE
 
   static sign(id) {
     const sub = { id }

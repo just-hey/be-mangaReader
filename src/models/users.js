@@ -8,7 +8,6 @@ class UserModel {
   }
 
   static getUserForVerification (email) {
-    console.log('dis',email);
     return db('users')
       .where({ email })
       .first()
@@ -18,7 +17,6 @@ class UserModel {
     const hashed_password = bcrypt.hashSync(password)
     return db('users')
     .insert({ username, email, hashed_password })
-    // note that 'role' is automatically defaulted to 'user' by the db
     .returning(['id'])
   }
 }
