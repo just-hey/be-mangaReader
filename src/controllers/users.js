@@ -7,7 +7,7 @@ const getAll = (req, res, next) => {
     .then(users => {
       res.status(200).json({ users })
     })
-}
+} 
 
 const login = (req, res, next) => {
   //this needs an email and password with no token. it then returns a token.
@@ -15,7 +15,7 @@ const login = (req, res, next) => {
   if(!email) throw new Error('missingEmail')
   if(!password) throw new Error('missingPassword')
   //check if user is in db.
-  model.getUserForVerification(email)
+  model.getUserByEmail(email)
     .then(user => {
       // console.log('the user thing in users.js',user)
       if (!user) throw new Error('noSuchUser')
@@ -33,21 +33,21 @@ const login = (req, res, next) => {
         .then(result =>{
           res.status(201).json({ response: result })
         })
-        .catch(next)
+        .catch(err => next(err))        
     })
 }
 
 const createUser = (req, res, next) => {
-  let { username, email, password } = req.body
-  model.createUser(username, email, password)
-    .then(user => {
-      res.status(201).json(user)
-    })
+  model.checkIfAlreadyUsed(req.body)
+    .then(() => model.createUser(req.body))
+    .then(user => res.status(201).json({ data: user }))
+    .catch(err => next(err))    
 }
 
 const deleteUser = (req, res, next) => {
-  let response = model.deleteUser(req.params.email)
-  res.status(200).json(response)
+  model.deleteUser(req.params.email)
+    .then((response) => res.status(200).json(response))
+    .catch(err => next(err))
 }
 
 module.exports = { getAll, login, createUser, deleteUser }

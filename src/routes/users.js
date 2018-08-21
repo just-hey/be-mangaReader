@@ -12,6 +12,6 @@ router.post('/signup', ctrl.createUser)
 // router.patch('/:email', ctrl.updateUser)
 
 router.delete('/:email', ctrl.deleteUser)
-
+ 
 
 module.exports = router

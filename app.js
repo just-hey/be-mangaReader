@@ -13,7 +13,7 @@ const { usersRoutes, chapterRoutes, bookMarkRoutes, titleRoutes } = require('./s
 require('dotenv').config()
 
 app.use(cors())
-app.disable('x-powered-by')
+app.disable('x-powered-by') 
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 

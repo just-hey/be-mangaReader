@@ -1,7 +1,8 @@
 function processErrorMessages(err) {
   if (err.message) {
     switch (err.message) {
-      case 'duplicateUser': return { status: 409, message: 'A user with this email address already exists' }
+      case 'duplicateEmail': return { status: 409, message: 'A user with this email address already exists' }
+      case 'duplicateUsername': return { status: 409, message: 'A user with this username already exists' }      
       case 'invalidPassword': return { status: 401, message: 'Incorrect password' }
       case 'invalidToken': return { status: 401, message: 'A valid authorization token is required' }
       case 'missingUserName': return { status: 400, message: 'First name is required' }
