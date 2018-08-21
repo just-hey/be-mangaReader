@@ -10,6 +10,7 @@ function processErrorMessages(err) {
       case 'noSuchUser': return { status: 404, message: `Requested user does not exist` }
       case 'requestorInvalid': return { status: 401, message: 'Requestor is not a valid user' }
       case 'requireAllFields': return { status: 400, message: 'Please fill in all fields before submitting' }
+      
       default:
         return { status: 500, message: 'Our apologies, but an internal server error has occurred' }
     }

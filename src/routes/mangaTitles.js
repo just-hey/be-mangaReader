@@ -1,13 +1,13 @@
-const express = require('express')
-const router = express.Router()
-const ctrl = require('../controllers/mangaTitles')
+// const express = require('express')
+// const router = express.Router()
+// const ctrl = require('../controllers/mangaTitles')
 
 
-router.get('/', ctrl.getAll)
+// router.get('/', ctrl.getAll)
 
-router.get('/:title', ctrl.getByTitle)
+// router.get('/:title', ctrl.getByTitle)
 
-router.post('/', ctrl.getByGenre)
+// router.post('/', ctrl.getByGenre)
 
 
-module.exports = router 
+// module.exports = router 

@@ -50,4 +50,4 @@ const deleteUser = (req, res, next) => {
   res.status(200).json(response)
 }
 
-module.exports = { getAll, login, createUser, updateUser, deleteUser }
+module.exports = { getAll, login, createUser, deleteUser }
