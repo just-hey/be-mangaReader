@@ -6,20 +6,25 @@ function getAll () {
 }
 
 function createUser ({ username, email, password }) {
+  if(!username) throw new Error('missingUsername')    
+  if(!email) throw new Error('missingEmail')  
+  if(!password) throw new Error('missingPassword')  
   const hashed_password = bcrypt.hashSync(password)
   return db('users')
     .insert({ username, email, hashed_password })
-    .returning(['id'])
+    .returning(['id', 'username', 'email'])
     .then(([user]) => user)
 }
 
 function getUserByEmail(email) { 
+  if(!email) throw new Error('missingEmail')
   return db('users')
     .where({ email })
     .first()
 }
 
 function getUserByUsername(username) {
+  if(!username) throw new Error('missingUsername')
   return db('users')
     .where({ username })
     .first()
@@ -33,7 +38,7 @@ function checkIfAlreadyUsed({ email, username }) {
     })
     .then(user => {
       if (user !== undefined) throw new Error('duplicateUsername')
-      return true
+      return null
     })
 }
 
